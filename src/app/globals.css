@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Merriweather", Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f8fafc;
+}
+
+/* Comfortable long-form reading style for blog articles */
+.prose-article {
+  font-family: var(--font-serif);
+  line-height: 1.85;
+}
+
+.prose-article p + p {
+  margin-top: 1.5rem;
+}
