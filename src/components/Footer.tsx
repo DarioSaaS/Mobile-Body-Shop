@@ -39,6 +39,14 @@ export default function Footer() {
                   {siteConfig.phoneDisplay}
                 </a>
               </li>
+              <li>
+                <a
+                  href={telHref(siteConfig.phoneRaw2)}
+                  className="font-medium text-cta-400 hover:text-cta-300"
+                >
+                  {siteConfig.phoneDisplay2}
+                </a>
+              </li>
               <li className="text-slate-400">{siteConfig.email}</li>
               <li className="text-slate-400">{siteConfig.address}</li>
             </ul>

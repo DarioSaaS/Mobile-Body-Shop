@@ -8,6 +8,8 @@ export const siteConfig = {
   tagline: "Mesa & Phoenix's Mobile Dent, Scratch & Paint Repair Specialists",
   phoneDisplay: "(480) 393-9469",
   phoneRaw: "+14803939469",
+  phoneDisplay2: "(480) 843-8284",
+  phoneRaw2: "+14808438284",
   smsRaw: "+14803939469",
   whatsappRaw: "14803939469",
   email: "quotes@mobilebodyshop.example",

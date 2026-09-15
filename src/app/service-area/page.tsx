@@ -61,12 +61,20 @@ export default function ServiceAreaIndexPage() {
               list. Give us a call and we&apos;ll let you know if we can come
               to you.
             </p>
-            <a
-              href={telHref(siteConfig.phoneRaw)}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-cta-500 px-7 py-3.5 text-base font-bold text-white shadow-glow transition-colors hover:bg-cta-600"
-            >
-              Call {siteConfig.phoneDisplay}
-            </a>
+            <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={telHref(siteConfig.phoneRaw)}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-cta-500 px-7 py-3.5 text-base font-bold text-white shadow-glow transition-colors hover:bg-cta-600"
+              >
+                Call {siteConfig.phoneDisplay}
+              </a>
+              <a
+                href={telHref(siteConfig.phoneRaw2)}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-cta-500 px-7 py-3.5 text-base font-bold text-white shadow-glow transition-colors hover:bg-cta-600"
+              >
+                Call {siteConfig.phoneDisplay2}
+              </a>
+            </div>
           </div>
         </div>
       </section>

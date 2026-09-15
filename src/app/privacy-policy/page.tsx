@@ -109,7 +109,8 @@ export default function PrivacyPolicyPage() {
         </h2>
         <p>
           If you have questions about this Privacy Policy, please contact us
-          at {siteConfig.email} or call {siteConfig.phoneDisplay}.
+          at {siteConfig.email} or call {siteConfig.phoneDisplay} or{" "}
+          {siteConfig.phoneDisplay2}.
         </p>
       </div>
     </section>

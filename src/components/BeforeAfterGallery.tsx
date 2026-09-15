@@ -89,6 +89,16 @@ export const standaloneGalleryItems: StandaloneGalleryItem[] = [
     title: "RV Side Panel & Decal Repair",
     image: "/images/gallery/rv-side-panel.jpg",
   },
+  {
+    id: "rv-front-cap-refinish",
+    title: "Motorhome Fiberglass Front Cap Refinish",
+    image: "/images/gallery/rv-front-cap-refinish.jpg",
+  },
+  {
+    id: "rv-front-cap-refinish-detail",
+    title: "Fiberglass Front Cap Repair — Detail View",
+    image: "/images/gallery/rv-front-cap-refinish-detail.jpg",
+  },
 ];
 
 export default function BeforeAfterGallery() {

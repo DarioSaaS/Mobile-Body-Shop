@@ -21,6 +21,14 @@ const contactOptions = [
     icon: PhoneIcon,
   },
   {
+    key: "call2",
+    label: "Call Now",
+    sublabel: siteConfig.phoneDisplay2,
+    href: telHref(siteConfig.phoneRaw2),
+    className: "bg-cta-500 hover:bg-cta-600",
+    icon: PhoneIcon,
+  },
+  {
     key: "sms",
     label: "Text a Photo",
     sublabel: "Get an instant quote",

@@ -191,6 +191,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 Call {siteConfig.phoneDisplay}
               </a>
               <a
+                href={telHref(siteConfig.phoneRaw2)}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-cta-500 px-5 py-2.5 text-sm font-bold text-white shadow-glow hover:bg-cta-600"
+              >
+                Call {siteConfig.phoneDisplay2}
+              </a>
+              <a
                 href={smsHref(
                   siteConfig.smsRaw,
                   "Hi! I read your blog and would like a repair quote."

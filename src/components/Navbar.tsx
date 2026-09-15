@@ -55,13 +55,20 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-2 md:flex">
           <a
             href={telHref(siteConfig.phoneRaw)}
             className="inline-flex items-center gap-2 rounded-full bg-cta-500 px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition-colors hover:bg-cta-600"
           >
             <PhoneIcon className="h-4 w-4" />
             Call Now: {siteConfig.phoneDisplay}
+          </a>
+          <a
+            href={telHref(siteConfig.phoneRaw2)}
+            className="inline-flex items-center gap-2 rounded-full border-2 border-cta-500/60 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+          >
+            <PhoneIcon className="h-4 w-4" />
+            Call Now: {siteConfig.phoneDisplay2}
           </a>
         </div>
 
@@ -71,6 +78,14 @@ export default function Navbar() {
             href={telHref(siteConfig.phoneRaw)}
             className="inline-flex items-center gap-1.5 rounded-full bg-cta-500 px-3 py-2 text-xs font-semibold text-white shadow-glow"
             aria-label="Call now"
+          >
+            <PhoneIcon className="h-3.5 w-3.5" />
+            Call
+          </a>
+          <a
+            href={telHref(siteConfig.phoneRaw2)}
+            className="inline-flex items-center gap-1.5 rounded-full border-2 border-cta-500/60 px-3 py-2 text-xs font-semibold text-white"
+            aria-label="Call now (second number)"
           >
             <PhoneIcon className="h-3.5 w-3.5" />
             Call

@@ -153,6 +153,13 @@ export default function ServiceAreaCityPage({ params }: CityPageProps) {
                   Call Us Now: {siteConfig.phoneDisplay}
                 </a>
                 <a
+                  href={telHref(siteConfig.phoneRaw2)}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-cta-500 px-7 py-4 text-base font-bold text-white shadow-glow transition-transform hover:scale-[1.02] hover:bg-cta-600"
+                >
+                  <PhoneIcon className="h-5 w-5" />
+                  Call Us Now: {siteConfig.phoneDisplay2}
+                </a>
+                <a
                   href={smsHref(
                     siteConfig.smsRaw,
                     `Hi! I'd like to text photos of my vehicle damage in ${city.name} for a quote.`
@@ -318,6 +325,13 @@ export default function ServiceAreaCityPage({ params }: CityPageProps) {
                 >
                   <PhoneIcon className="h-5 w-5" />
                   Call Now: {siteConfig.phoneDisplay}
+                </a>
+                <a
+                  href={telHref(siteConfig.phoneRaw2)}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-cta-500 px-6 py-4 text-base font-bold text-white shadow-glow transition-transform hover:scale-[1.02] hover:bg-cta-600"
+                >
+                  <PhoneIcon className="h-5 w-5" />
+                  Call Now: {siteConfig.phoneDisplay2}
                 </a>
                 <a
                   href={whatsappHref(

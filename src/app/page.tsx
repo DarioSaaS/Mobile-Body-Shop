@@ -53,6 +53,12 @@ export default function HomePage() {
                 technicians come to your home or office and repair dents,
                 scratches, and bumper damage in hours — not days.
               </p>
+              <p className="mt-3 max-w-xl text-lg leading-8 text-slate-300">
+                We also repair fiberglass panels and components — from
+                cracks and stress fractures to full gelcoat refinishing —
+                restoring structural integrity and a seamless
+                factory-matched finish.
+              </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
@@ -61,6 +67,13 @@ export default function HomePage() {
                 >
                   <PhoneIcon className="h-5 w-5" />
                   Call Us Now: {siteConfig.phoneDisplay}
+                </a>
+                <a
+                  href={telHref(siteConfig.phoneRaw2)}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-cta-500 px-7 py-4 text-base font-bold text-white shadow-glow transition-transform hover:scale-[1.02] hover:bg-cta-600"
+                >
+                  <PhoneIcon className="h-5 w-5" />
+                  Call Us Now: {siteConfig.phoneDisplay2}
                 </a>
                 <a
                   href={smsHref(
@@ -215,6 +228,13 @@ export default function HomePage() {
                 >
                   <PhoneIcon className="h-5 w-5" />
                   Call Now: {siteConfig.phoneDisplay}
+                </a>
+                <a
+                  href={telHref(siteConfig.phoneRaw2)}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-cta-500 px-6 py-4 text-base font-bold text-white shadow-glow transition-transform hover:scale-[1.02] hover:bg-cta-600"
+                >
+                  <PhoneIcon className="h-5 w-5" />
+                  Call Now: {siteConfig.phoneDisplay2}
                 </a>
                 <a
                   href={whatsappHref(
