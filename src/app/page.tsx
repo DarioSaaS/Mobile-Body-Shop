@@ -54,7 +54,7 @@ export default function HomePage() {
                 scratches, and bumper damage in hours — not days.
               </p>
               <p className="mt-3 max-w-xl text-lg leading-8 text-slate-300">
-                We also repair fiberglass panels and components — from
+                We also offer RV Fiberglass Repair for panels and components — from
                 cracks and stress fractures to full gelcoat refinishing —
                 restoring structural integrity and a seamless
                 factory-matched finish.
