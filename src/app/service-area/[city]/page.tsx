@@ -9,6 +9,7 @@ import {
   serviceAreaCities,
 } from "@/lib/service-areas";
 import {
+  openingHoursSpecification,
   siteConfig,
   smsHref,
   telHref,
@@ -51,24 +52,30 @@ export default function ServiceAreaCityPage({ params }: CityPageProps) {
     ? galleryItems.find((item) => item.id === city.galleryItemId)
     : undefined;
   const otherCities = serviceAreaCities.filter((c) => c.slug !== city.slug);
+  const relatedCities = city.relatedCities
+    .map((slug) => getServiceAreaCity(slug))
+    .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
-    "@type": "AutoBodyShop",
+    "@type": "AutoRepair",
     name: `${siteConfig.businessName} — ${city.name}, AZ`,
     description: city.blurb,
+    url: `${siteConfig.siteUrl}/service-area/${city.slug}`,
     telephone: siteConfig.phoneDisplay,
-    areaServed: {
-      "@type": "City",
-      name: `${city.name}, AZ`,
-    },
+    image: `${siteConfig.siteUrl}${siteConfig.image}`,
+    priceRange: siteConfig.priceRange,
     address: {
       "@type": "PostalAddress",
       addressLocality: city.name,
       addressRegion: "AZ",
       addressCountry: "US",
     },
-    url: `${siteConfig.siteUrl}/service-area/${city.slug}`,
+    areaServed: {
+      "@type": "City",
+      name: `${city.name}, AZ`,
+    },
+    openingHoursSpecification,
   };
 
   const breadcrumbJsonLd = {
@@ -140,9 +147,16 @@ export default function ServiceAreaCityPage({ params }: CityPageProps) {
                 Mobile Dent, Scratch &amp; Paint Repair{" "}
                 <span className="text-cta-400">in {city.name}, AZ</span>
               </h1>
-              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
-                {city.blurb}
-              </p>
+              {city.heroParagraphs.map((paragraph, i) => (
+                <p
+                  key={i}
+                  className={`max-w-xl text-lg leading-8 text-slate-300 ${
+                    i === 0 ? "mt-5" : "mt-3"
+                  }`}
+                >
+                  {paragraph}
+                </p>
+              ))}
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
@@ -191,6 +205,55 @@ export default function ServiceAreaCityPage({ params }: CityPageProps) {
         </div>
       </section>
 
+      {/* LOCAL EXPERTISE */}
+      <section className="bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
+            <div className="lg:col-span-2">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-700">
+                Local Expertise
+              </h2>
+              <p className="mt-2 text-3xl font-bold tracking-tight text-brand-950 sm:text-4xl">
+                Why {city.name} Trusts Our Mobile Team
+              </p>
+              <div className="mt-6 flex flex-col gap-4">
+                {city.localExpertise.map((paragraph, i) => (
+                  <p key={i} className="text-base leading-7 text-slate-600">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-6">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">
+                  Response Time
+                </p>
+                <p className="mt-2 text-base font-semibold text-brand-950">
+                  {city.responseTime}
+                </p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">
+                  Neighborhoods &amp; Landmarks We Cover
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {city.neighborhoods.map((place) => (
+                    <span
+                      key={place}
+                      className="rounded-full bg-white px-3 py-1.5 text-xs font-medium text-slate-700 ring-1 ring-inset ring-slate-200"
+                    >
+                      {place}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SERVICES */}
       <section className="bg-slate-50 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -206,7 +269,7 @@ export default function ServiceAreaCityPage({ params }: CityPageProps) {
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <div
-                key={service.title}
+                key={service.slug}
                 className="flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-lg"
               >
                 <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-50 text-3xl">
@@ -229,9 +292,15 @@ export default function ServiceAreaCityPage({ params }: CityPageProps) {
                     </li>
                   ))}
                 </ul>
+                <Link
+                  href={`/#service-${service.slug}`}
+                  className="mt-5 text-sm font-semibold text-brand-700 hover:text-brand-800"
+                >
+                  Learn more about {service.title} →
+                </Link>
                 <a
                   href={telHref(siteConfig.phoneRaw)}
-                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-cta-600"
+                  className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-cta-600"
                 >
                   Get a Quote
                 </a>
@@ -264,6 +333,46 @@ export default function ServiceAreaCityPage({ params }: CityPageProps) {
                 See more before &amp; after photos →
               </Link>
             </p>
+          </div>
+        </section>
+      )}
+
+      {/* RELATED AREAS */}
+      {relatedCities.length > 0 && (
+        <section className="bg-slate-50 py-16 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-700">
+                Related Areas
+              </h2>
+              <p className="mt-2 text-3xl font-bold tracking-tight text-brand-950 sm:text-4xl">
+                Mobile Repair Near {city.name}
+              </p>
+              <p className="mt-4 text-lg text-slate-600">
+                Also driving through or living near one of these nearby
+                communities? We cover them too.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedCities.map((nearby) => (
+                <Link
+                  key={nearby.slug}
+                  href={`/service-area/${nearby.slug}`}
+                  className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-lg"
+                >
+                  <h3 className="text-lg font-bold text-brand-950 group-hover:text-brand-700">
+                    Mobile Repair in {nearby.name}, AZ
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">
+                    {nearby.blurb}
+                  </p>
+                  <span className="mt-4 text-sm font-semibold text-brand-700 group-hover:text-brand-800">
+                    View {nearby.name} service area →
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       )}

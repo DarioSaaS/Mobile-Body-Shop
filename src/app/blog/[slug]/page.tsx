@@ -127,7 +127,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       <header className="bg-gradient-to-br from-brand-950 to-brand-900 py-12 sm:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb">
-            <ol className="flex items-center gap-1.5 text-xs text-slate-500">
+            <ol className="flex flex-wrap items-center gap-1.5 text-xs text-slate-500">
               <li>
                 <Link href="/" className="hover:text-cta-400">
                   Home
@@ -138,6 +138,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 <Link href="/blog" className="hover:text-cta-400">
                   Blog
                 </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="max-w-[220px] truncate text-slate-400 sm:max-w-xs">
+                {post.title}
               </li>
             </ol>
           </nav>

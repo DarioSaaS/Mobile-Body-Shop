@@ -14,6 +14,9 @@ export const siteConfig = {
   whatsappRaw: "14803939469",
   email: "quotes@mobilebodyshop.example",
   address: "Serving the Greater Phoenix Metro Area",
+  priceRange: "$$",
+  /** Representative photo used for social sharing and JSON-LD structured data. */
+  image: "/images/gallery/bumper-scuff-after.jpg",
   hours: [
     { day: "Monday – Friday", time: "7:00 AM – 7:00 PM" },
     { day: "Saturday", time: "8:00 AM – 5:00 PM" },
@@ -35,6 +38,36 @@ export const siteConfig = {
     google: "https://google.com",
   },
 };
+
+/**
+ * Schema.org `OpeningHoursSpecification` entries derived from `siteConfig.hours`,
+ * ready to drop into any LocalBusiness / AutoRepair JSON-LD block.
+ */
+export const openingHoursSpecification = [
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+    ],
+    opens: "07:00",
+    closes: "19:00",
+  },
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Saturday"],
+    opens: "08:00",
+    closes: "17:00",
+  },
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Sunday"],
+    description: "By appointment only",
+  },
+];
 
 export const telHref = (phone: string) => `tel:${phone}`;
 export const smsHref = (phone: string, body = "") =>

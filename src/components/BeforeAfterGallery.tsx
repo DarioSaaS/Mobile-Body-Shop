@@ -7,6 +7,9 @@ export type GalleryItem = {
   category: string;
   beforeLabel: string;
   afterLabel: string;
+  /** Descriptive, keyword-rich alt text for the before/after photos (SEO + accessibility). */
+  beforeAlt: string;
+  afterAlt: string;
   /** Fallback gradient shown when no real photo is available yet. */
   beforeGradient: string;
   afterGradient: string;
@@ -28,6 +31,10 @@ export const galleryItems: GalleryItem[] = [
     category: "Panel Painting",
     beforeLabel: "Filler & primer stage",
     afterLabel: "Color-matched & like new",
+    beforeAlt:
+      "Rear quarter panel dent and scuffed paint before mobile repair in Mesa, AZ",
+    afterAlt:
+      "Rear quarter panel after color-matched paint blend repair, mobile auto body repair in Mesa, AZ",
     beforeGradient: "from-slate-500 via-slate-400 to-slate-600",
     afterGradient: "from-brand-700 via-brand-600 to-brand-800",
     beforeImage: "/images/gallery/bumper-scuff-before.jpg",
@@ -40,6 +47,10 @@ export const galleryItems: GalleryItem[] = [
     category: "Scratch Touch-Up",
     beforeLabel: "Primed & masked for paint",
     afterLabel: "Blended, glossy factory finish",
+    beforeAlt:
+      "Deep scratch on car quarter panel before mobile scratch repair in Phoenix, AZ",
+    afterAlt:
+      "Quarter panel scratch repaired with blended, factory-matched paint in Phoenix, AZ",
     beforeGradient: "from-zinc-600 via-zinc-500 to-zinc-700",
     afterGradient: "from-brand-600 via-brand-500 to-brand-700",
     beforeImage: "/images/gallery/quarter-scratch-before.png",
@@ -52,6 +63,10 @@ export const galleryItems: GalleryItem[] = [
     category: "Panel Painting",
     beforeLabel: "Panel prepped for hail dent repair",
     afterLabel: "Restored, glossy factory finish",
+    beforeAlt:
+      "Hail-damaged car panel with multiple dents before mobile hail dent repair in Chandler, AZ",
+    afterAlt:
+      "Car panel after mobile hail dent repair and factory-matched paint restoration in Chandler, AZ",
     beforeGradient: "from-stone-500 via-stone-400 to-stone-600",
     afterGradient: "from-brand-800 via-brand-700 to-brand-900",
     beforeImage: "/images/gallery/hail-dent-before.png",
@@ -64,6 +79,10 @@ export const galleryItems: GalleryItem[] = [
     category: "Panel Painting",
     beforeLabel: "Deep crease in the bed side panel",
     afterLabel: "Seamless panel repair, factory finish",
+    beforeAlt:
+      "Deep crease dent in truck bed side panel before mobile dent repair in Gilbert, AZ",
+    afterAlt:
+      "Truck bed side panel after seamless crease repair and factory paint match in Gilbert, AZ",
     beforeGradient: "from-neutral-600 via-neutral-500 to-neutral-700",
     afterGradient: "from-brand-700 via-brand-600 to-brand-900",
     beforeImage: "/images/gallery/quarter-panel-before.png",
@@ -76,6 +95,8 @@ export type StandaloneGalleryItem = {
   id: string;
   title: string;
   image: string;
+  /** Descriptive, keyword-rich alt text for the photo (SEO + accessibility). */
+  alt: string;
 };
 
 export const standaloneGalleryItems: StandaloneGalleryItem[] = [
@@ -83,21 +104,25 @@ export const standaloneGalleryItems: StandaloneGalleryItem[] = [
     id: "rv-front-cap",
     title: "RV Front Cap Paint Prep",
     image: "/images/gallery/rv-front-cap.jpg",
+    alt: "RV fiberglass front cap sanded and prepped for paint during mobile RV repair in Mesa, AZ",
   },
   {
     id: "rv-side-panel",
     title: "RV Side Panel & Decal Repair",
     image: "/images/gallery/rv-side-panel.jpg",
+    alt: "RV side panel and decal repair completed by mobile technician in the Phoenix metro area",
   },
   {
     id: "rv-front-cap-refinish",
     title: "Motorhome Fiberglass Front Cap Refinish",
     image: "/images/gallery/rv-front-cap-refinish.jpg",
+    alt: "Motorhome fiberglass front cap after mobile refinishing and gelcoat repair",
   },
   {
     id: "rv-front-cap-refinish-detail",
     title: "Fiberglass Front Cap Repair — Detail View",
     image: "/images/gallery/rv-front-cap-refinish-detail.jpg",
+    alt: "Close-up detail of repaired RV fiberglass front cap showing seamless factory-matched finish",
   },
 ];
 
@@ -149,7 +174,7 @@ export function GalleryCard({ item }: { item: GalleryItem }) {
         <GalleryPhoto
           image={item.beforeImage}
           gradient={item.beforeGradient}
-          alt={`${item.title} — before`}
+          alt={item.beforeAlt}
           badge="BEFORE"
           badgeClassName="bg-slate-900/80"
           state="before"
@@ -158,7 +183,7 @@ export function GalleryCard({ item }: { item: GalleryItem }) {
         <GalleryPhoto
           image={item.afterImage}
           gradient={item.afterGradient}
-          alt={`${item.title} — after`}
+          alt={item.afterAlt}
           badge="RESULT"
           badgeClassName="bg-cta-500"
           state="after"
@@ -209,8 +234,8 @@ function GalleryPhoto({
           src={image}
           alt={alt}
           fill
-          sizes="(min-width: 1024px) 480px, 50vw"
-          quality={92}
+          sizes="(min-width: 1024px) 608px, 50vw"
+          quality={78}
           className="object-cover object-center"
         />
       ) : (
@@ -233,10 +258,10 @@ function StandaloneGalleryCard({ item }: { item: StandaloneGalleryItem }) {
       <div className="relative aspect-[4/3] w-full bg-slate-900">
         <Image
           src={item.image}
-          alt={item.title}
+          alt={item.alt}
           fill
-          sizes="(min-width: 1024px) 480px, 100vw"
-          quality={92}
+          sizes="(min-width: 1024px) 600px, (min-width: 640px) 50vw, 100vw"
+          quality={78}
           className="object-cover object-center"
         />
       </div>

@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import QuoteForm from "@/components/QuoteForm";
 import BeforeAfterGallery from "@/components/BeforeAfterGallery";
+import Testimonials from "@/components/Testimonials";
+import FaqSection from "@/components/FaqSection";
 import {
+  openingHoursSpecification,
   siteConfig,
   smsHref,
   telHref,
@@ -10,11 +13,67 @@ import {
 } from "@/lib/site-config";
 import { services } from "@/lib/services";
 import { slugifyCity } from "@/lib/service-areas";
+import { testimonials } from "@/lib/testimonials";
+import { homeFaq } from "@/lib/faq";
+
+const homeDescription =
+  "Professional mobile dent, scratch, and paint repair that comes to you in Mesa, Phoenix, Chandler, Gilbert, Tempe & Scottsdale. Text a photo for an instant free quote.";
 
 export const metadata: Metadata = {
   title: `${siteConfig.businessName} | Mobile Dent, Scratch & Paint Repair in Mesa & Phoenix`,
-  description:
-    "Professional mobile dent, scratch, and paint repair that comes to you in Mesa, Phoenix, Chandler, Gilbert, Tempe & Scottsdale. Text a photo for an instant free quote.",
+  description: homeDescription,
+};
+
+const averageRating =
+  testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
+
+const aggregateRatingJsonLd = {
+  "@type": "AggregateRating",
+  ratingValue: Number(averageRating.toFixed(1)),
+  bestRating: 5,
+  worstRating: 1,
+  reviewCount: testimonials.length,
+};
+
+const reviewsJsonLd = testimonials.map((t) => ({
+  "@type": "Review",
+  author: { "@type": "Person", name: t.name },
+  datePublished: t.date,
+  reviewBody: t.quote,
+  reviewRating: {
+    "@type": "Rating",
+    ratingValue: t.rating,
+    bestRating: 5,
+    worstRating: 1,
+  },
+}));
+
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  name: siteConfig.businessName,
+  description: homeDescription,
+  url: siteConfig.siteUrl,
+  telephone: siteConfig.phoneDisplay,
+  image: `${siteConfig.siteUrl}${siteConfig.image}`,
+  priceRange: siteConfig.priceRange,
+  areaServed: siteConfig.serviceAreas,
+  openingHoursSpecification,
+  aggregateRating: aggregateRatingJsonLd,
+  review: reviewsJsonLd,
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: homeFaq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
 };
 
 const trustPoints = [
@@ -27,6 +86,15 @@ const trustPoints = [
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800">
         <div
@@ -129,8 +197,9 @@ export default function HomePage() {
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <div
-                key={service.title}
-                className="flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-lg"
+                key={service.slug}
+                id={`service-${service.slug}`}
+                className="flex scroll-mt-24 flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-lg"
               >
                 <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-50 text-3xl">
                   {service.icon}
@@ -166,6 +235,12 @@ export default function HomePage() {
 
       {/* BEFORE & AFTER GALLERY */}
       <BeforeAfterGallery />
+
+      {/* TESTIMONIALS / REVIEWS */}
+      <Testimonials />
+
+      {/* FAQ */}
+      <FaqSection />
 
       {/* SERVICE AREA / COVERAGE + AGGRESSIVE CTA */}
       <section

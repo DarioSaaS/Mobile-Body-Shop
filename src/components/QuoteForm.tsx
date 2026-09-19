@@ -47,7 +47,7 @@ export default function QuoteForm() {
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-cta-500 text-2xl text-white">
           ✓
         </span>
-        <h3 className="text-xl font-bold text-white">Request received!</h3>
+        <h2 className="text-xl font-bold text-white">Request received!</h2>
         <p className="max-w-sm text-sm text-slate-300">
           Thanks — a technician will text or call you shortly with your
           instant quote. For faster service, feel free to call or text us
@@ -70,9 +70,9 @@ export default function QuoteForm() {
       className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-sm sm:p-8"
     >
       <div>
-        <h3 className="text-xl font-bold text-white">
+        <h2 className="text-xl font-bold text-white">
           Get Your Free Instant Quote
-        </h3>
+        </h2>
         <p className="mt-1 text-sm text-slate-300">
           Tell us about the damage and we&apos;ll text you back with a price
           — usually within the hour.

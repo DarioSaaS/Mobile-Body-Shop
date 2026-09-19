@@ -3,6 +3,8 @@
  * so pricing/copy only needs to be updated in one place.
  */
 export type Service = {
+  /** Stable id used to build in-page anchors, e.g. `/#service-panel-painting`. */
+  slug: string;
   icon: string;
   title: string;
   description: string;
@@ -11,6 +13,7 @@ export type Service = {
 
 export const services: Service[] = [
   {
+    slug: "panel-painting",
     icon: "🎨",
     title: "Panel Painting",
     description:
@@ -18,6 +21,7 @@ export const services: Service[] = [
     points: ["Factory color-code matching", "Dust-controlled mobile booth", "From $350 per panel"],
   },
   {
+    slug: "bumper-repair",
     icon: "🚗",
     title: "Bumper Repair",
     description:
@@ -25,6 +29,7 @@ export const services: Service[] = [
     points: ["Plastic welding available", "Factory color-code matching", "From $250"],
   },
   {
+    slug: "scratch-touchups",
     icon: "✨",
     title: "Scratch Touch-Ups & Polishing",
     description:

@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/#gallery", label: "Gallery" },
   { href: "/service-area", label: "Service Area" },
   { href: "/blog", label: "Blog" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export default function Navbar() {
