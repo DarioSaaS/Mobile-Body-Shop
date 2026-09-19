@@ -5,7 +5,7 @@ export default function FloatingCallButton() {
     <a
       href={telHref(siteConfig.phoneRaw)}
       aria-label={`Call now: ${siteConfig.phoneDisplay}`}
-      className="fixed z-40 inline-flex items-center justify-center gap-2 rounded-full bg-cta-500 text-white shadow-glow transition-transform duration-200 hover:scale-105 hover:bg-cta-600 motion-safe:animate-cta-pulse bottom-[max(1rem,calc(env(safe-area-inset-bottom)+0.75rem))] right-[max(1rem,calc(env(safe-area-inset-right)+0.75rem))] h-14 w-14 sm:h-auto sm:w-auto sm:px-5 sm:py-3.5 md:bottom-6 md:right-6"
+      className="fixed z-[60] inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/80 bg-cta-500 text-white shadow-float transition-transform duration-200 hover:scale-105 hover:border-white hover:bg-cta-600 motion-safe:animate-cta-pulse bottom-[max(1rem,calc(env(safe-area-inset-bottom)+0.75rem))] right-[max(1rem,calc(env(safe-area-inset-right)+0.75rem))] h-14 w-14 sm:h-auto sm:w-auto sm:px-5 sm:py-3.5 md:bottom-6 md:right-6"
     >
       <PhoneIcon className="h-6 w-6 shrink-0" />
       <span className="hidden text-sm font-semibold sm:inline">Call Now</span>

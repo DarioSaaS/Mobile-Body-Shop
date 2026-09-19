@@ -36,16 +36,20 @@ const config: Config = {
       },
       boxShadow: {
         glow: "0 0 0 1px rgba(34,197,94,0.15), 0 8px 24px -4px rgba(34,197,94,0.35)",
+        float:
+          "0 0 0 1px rgba(2,6,23,0.12), 0 18px 35px -8px rgba(2,6,23,0.55), 0 8px 14px -6px rgba(2,6,23,0.45)",
       },
       keyframes: {
+        // The elevation layers repeat in both steps because an animated
+        // box-shadow replaces the element's shadow outright.
         "cta-pulse": {
           "0%, 100%": {
             boxShadow:
-              "0 0 0 0 rgba(34,197,94,0.45), 0 8px 24px -4px rgba(34,197,94,0.35)",
+              "0 0 0 1px rgba(2,6,23,0.12), 0 0 0 0 rgba(34,197,94,0.5), 0 18px 35px -8px rgba(2,6,23,0.55), 0 8px 14px -6px rgba(2,6,23,0.45)",
           },
           "70%": {
             boxShadow:
-              "0 0 0 12px rgba(34,197,94,0), 0 8px 24px -4px rgba(34,197,94,0.35)",
+              "0 0 0 1px rgba(2,6,23,0.12), 0 0 0 14px rgba(34,197,94,0), 0 18px 35px -8px rgba(2,6,23,0.55), 0 8px 14px -6px rgba(2,6,23,0.45)",
           },
         },
       },
