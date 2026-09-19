@@ -37,8 +37,21 @@ const config: Config = {
       boxShadow: {
         glow: "0 0 0 1px rgba(34,197,94,0.15), 0 8px 24px -4px rgba(34,197,94,0.35)",
       },
+      keyframes: {
+        "cta-pulse": {
+          "0%, 100%": {
+            boxShadow:
+              "0 0 0 0 rgba(34,197,94,0.45), 0 8px 24px -4px rgba(34,197,94,0.35)",
+          },
+          "70%": {
+            boxShadow:
+              "0 0 0 12px rgba(34,197,94,0), 0 8px 24px -4px rgba(34,197,94,0.35)",
+          },
+        },
+      },
       animation: {
         "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "cta-pulse": "cta-pulse 2.4s ease-out infinite",
       },
     },
   },

@@ -17,10 +17,12 @@ import { testimonials } from "@/lib/testimonials";
 import { homeFaq } from "@/lib/faq";
 
 const homeDescription =
-  "Professional mobile dent, scratch, and paint repair that comes to you in Mesa, Phoenix, Chandler, Gilbert, Tempe & Scottsdale. Text a photo for an instant free quote.";
+  "Dents, paint damage & RV fiberglass repair — done at your home or office in Mesa, Phoenix, Chandler & Tempe. Same-day mobile service. Free estimate — call now.";
 
 export const metadata: Metadata = {
-  title: `${siteConfig.businessName} | Mobile Dent, Scratch & Paint Repair in Mesa & Phoenix`,
+  title: {
+    absolute: "Mobile Dent, Paint & Fiberglass Repair | Mesa, AZ",
+  },
   description: homeDescription,
 };
 
@@ -112,17 +114,21 @@ export default function HomePage() {
                 📍 Serving Mesa &amp; the Greater Phoenix Area
               </span>
               <h1 className="mt-6 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
-                Mobile Dent, Scratch &amp; Paint Repair{" "}
-                <span className="text-cta-400">at Your Doorstep</span> in
-                Mesa &amp; Phoenix
+                Mobile Dent, Paint &amp; Fiberglass Repair in Mesa &amp; Phoenix
               </h1>
+              <h2 className="mt-4 text-lg font-semibold leading-snug text-slate-200 sm:text-xl lg:text-2xl">
+                Also serving Chandler, Gilbert, Tempe, Scottsdale, Queen Creek
+                &amp; Apache Junction
+              </h2>
               <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
                 Skip the body shop drop-off. Our fully-equipped mobile
-                technicians come to your home or office and repair dents,
-                scratches, and bumper damage in hours — not days.
+                technicians come to your home or office in Mesa, Phoenix,
+                and Tempe — repairing dents, scratches, paint damage, and
+                bumper damage in hours, not days.
               </p>
               <p className="mt-3 max-w-xl text-lg leading-8 text-slate-300">
-                We also offer RV Fiberglass Repair for panels and components — from
+                We also offer RV Fiberglass Repair for panels and components in
+                Chandler and Gilbert — from
                 cracks and stress fractures to full gelcoat refinishing —
                 restoring structural integrity and a seamless
                 factory-matched finish.

@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Merriweather } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ContactWidget from "@/components/ContactWidget";
+import FloatingCallButton from "@/components/FloatingCallButton";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -18,6 +18,10 @@ const merriweather = Merriweather({
   variable: "--font-serif",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: {
@@ -57,7 +61,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1 pt-16">{children}</main>
         <Footer />
-        <ContactWidget />
+        <FloatingCallButton />
       </body>
     </html>
   );

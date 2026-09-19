@@ -11,7 +11,7 @@ export const homeFaq: FaqItem[] = [
   {
     question: "How much does mobile dent and paint repair cost?",
     answer:
-      "Most jobs range from $175 for a scratch touch-up, $250+ for bumper repair, to $350+ per panel for a full repaint — exact pricing depends on the size and severity of the damage. Text us a photo and we'll give you an honest, no-obligation quote before any work starts.",
+      "Exact pricing depends on the size and severity of the damage. Text us a photo and we'll give you an honest, no-obligation quote before any work starts.",
   },
   {
     question: "Do you come to my home or office?",
