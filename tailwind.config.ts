@@ -29,6 +29,12 @@ const config: Config = {
           600: "#16a34a",
           700: "#15803d",
         },
+        // Orange reserved for the floating call button so it stays
+        // distinguishable from the green CTAs it overlaps while scrolling
+        hotline: {
+          500: "#ff6b35",
+          600: "#e5562a",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
@@ -45,11 +51,11 @@ const config: Config = {
         "cta-pulse": {
           "0%, 100%": {
             boxShadow:
-              "0 0 0 1px rgba(2,6,23,0.12), 0 0 0 0 rgba(34,197,94,0.5), 0 18px 35px -8px rgba(2,6,23,0.55), 0 8px 14px -6px rgba(2,6,23,0.45)",
+              "0 0 0 1px rgba(2,6,23,0.12), 0 0 0 0 rgba(255,107,53,0.5), 0 18px 35px -8px rgba(2,6,23,0.55), 0 8px 14px -6px rgba(2,6,23,0.45)",
           },
           "70%": {
             boxShadow:
-              "0 0 0 1px rgba(2,6,23,0.12), 0 0 0 14px rgba(34,197,94,0), 0 18px 35px -8px rgba(2,6,23,0.55), 0 8px 14px -6px rgba(2,6,23,0.45)",
+              "0 0 0 1px rgba(2,6,23,0.12), 0 0 0 14px rgba(255,107,53,0), 0 18px 35px -8px rgba(2,6,23,0.55), 0 8px 14px -6px rgba(2,6,23,0.45)",
           },
         },
       },
